@@ -25,7 +25,7 @@ jobs:
       - run:
           name: "My first name"
           command: |
-            const firstName = "John"
+            var firstName = "John"
             console.log(firstName)
   my-last-name:
     docker:
@@ -35,7 +35,7 @@ jobs:
       - run:
           name: "My last name"
           command: |
-            const lastName = "Nasimba"
+            var lastName = "Nasimba"
             console.log(lastName)
 
 # Invoke jobs via workflows

@@ -19,23 +19,23 @@ jobs:
           command: "echo Hello, World!"
   my-first-name:
     docker:
-      - image: circleci/node:13.8.0
+      - image: circleci/node:12.18
     steps:
       - checkout
       - run:
           name: "My first name"
           command: |
-            var firstName = "John"
+            let firstName = "John"
             console.log(firstName)
   my-last-name:
     docker:
-      - image: circleci/node:13.8.0
+      - image: circleci/node:12.18
     steps:
       - checkout
       - run:
           name: "My last name"
           command: |
-            var lastName = "Nasimba"
+            let lastName = "Nasimba"
             console.log(lastName)
 
 # Invoke jobs via workflows

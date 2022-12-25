@@ -17,10 +17,32 @@ jobs:
       - run:
           name: "Say hello"
           command: "echo Hello, World!"
-
+  my-first-name:
+    docker:
+      - image: circleci/node:12.18
+    steps:
+      - checkout
+      - run:
+          name: "My first name"
+          command: node -e "console.log('My first name is John')"  
+            
+  my-last-name:
+    docker:
+      - image: circleci/node:12.18
+    steps:
+      - checkout
+      - run:
+          name: "My last name"
+          command: node -e "console.log('My last name is Nasimba')"
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
   say-hello-workflow:
     jobs:
       - say-hello
+  my-first-name-workflow:
+    jobs:
+      - my-first-name
+  my-last-name-workflow:
+    jobs:
+      - my-last-name

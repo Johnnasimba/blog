@@ -45,4 +45,6 @@ workflows:
       - my-first-name
   my-last-name-workflow:
     jobs:
-      - my-last-name
+      - my-last-name:
+          requires:
+            - my-first-name

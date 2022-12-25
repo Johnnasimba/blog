@@ -37,12 +37,10 @@ jobs:
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  say-hello-workflow:
+  what's-my-name-workflow:
     jobs:
       - say-hello
-  my-first-name-workflow:
-    jobs:
       - my-first-name
-  my-last-name-workflow:
-    jobs:
-      - my-last-name
+      - my-last-name:
+          requires:
+            - my-first-name

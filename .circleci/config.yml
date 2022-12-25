@@ -24,7 +24,9 @@ jobs:
       - checkout
       - run:
           name: "My first name"
-          command: "console.log('John')"
+          command: |
+            const firstName = "John"
+            console.log(firstName)
   my-last-name:
     docker:
       - image: circleci/node:13.8.0
@@ -32,7 +34,9 @@ jobs:
       - checkout
       - run:
           name: "My last name"
-          command: "console.log('Nasimba')"
+          command: |
+            const lastName = "Nasimba"
+            console.log(lastName)
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows

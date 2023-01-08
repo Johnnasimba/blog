@@ -1,5 +1,8 @@
 
 version: 2.1
+
+&docker_image
+  image: cimg/base:stable
 commands:
   print_pipeline_id:
     description: "Print the pipeline ID"
@@ -10,7 +13,7 @@ commands:
 jobs:
   build:
     docker:
-      - image: cimg/base:stable
+      - <<: *docker_image
     steps:
       - print_pipeline_id
 workflows:

@@ -25,6 +25,7 @@ jobs:
           command: "echo run on failure"
           when: on_fail
 workflows:
-  workflow-id:
+  failed jobs:
     jobs:
-      - build
+      - fail
+      - run-on-failure

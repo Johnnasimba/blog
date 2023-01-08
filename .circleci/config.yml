@@ -6,7 +6,7 @@ commands:
     steps:
       - run:
           name: "Print the pipeline ID"
-          command: "echo Workflow ID: $CIRCLE_WORKFLOW_ID \nIt works!"
+          command: "echo -e 'Workflow ID: $CIRCLE_WORKFLOW_ID \nIt works!'"
 jobs:
   build:
     docker:

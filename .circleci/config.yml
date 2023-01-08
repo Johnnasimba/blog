@@ -4,18 +4,26 @@ version: 2.1
 docker_image: &docker_image
   image: cimg/base:stable
 commands:
-  print_pipeline_id:
-    description: "Print the pipeline ID"
+  fail-on-purpose:
+    description: "This command will fail on purpose"
     steps:
       - run:
-          name: "Print the pipeline ID"
-          command: "echo -e 'Workflow ID: $CIRCLE_WORKFLOW_ID \nIt works!'"
+          name: "Return 1"
+          command: "exit 1"
 jobs:
-  build:
+  fail:
     docker:
       - <<: *docker_image
     steps:
-      - print_pipeline_id
+      - fail-on-purpose
+  run-on-failure:
+    docker:
+      - <<: *docker_image
+    steps:
+      - run:
+          name: "Run on failure"
+          command: "echo run on failure"
+          when: on_fail
 workflows:
   workflow-id:
     jobs:

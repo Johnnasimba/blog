@@ -7,25 +7,18 @@ commands:
   fail-on-purpose:
     description: "This command will fail on purpose"
     steps:
-      - run:
-          name: "Return 1"
-          command: "exit 1"
+      - run: return 1
+      - run: 
+          name: on error
+          command: echo "There is an error on this job"
+          when: on_fail
 jobs:
   fail:
     docker:
       - <<: *docker_image
     steps:
       - fail-on-purpose
-  run-on-failure:
-    docker:
-      - <<: *docker_image
-    steps:
-      - run:
-          name: "Run on failure"
-          command: "echo 'run on failure'"
-          when: on_fail
 workflows:
   failed jobs:
     jobs:
       - fail
-      - run-on-failure

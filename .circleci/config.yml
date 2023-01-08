@@ -8,14 +8,13 @@ commands:
           name: "Print the pipeline ID"
           command: "echo Workflow ID: $CIRCLE_WORKFLOW_ID"
 jobs:
-  workflow-id:
+  build:
     docker:
       - image: cimg/base:stable
     steps:
       - checkout
       - run: print_pipeline_id
-      - run: 'It works!'
 workflows:
-  workflow_id:
+  workflow-id:
     jobs:
-      - workflow-id
+      - build

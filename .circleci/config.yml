@@ -28,6 +28,4 @@ workflows:
   failed jobs:
     jobs:
       - fail
-      - run-on-failure:
-          requires:
-            - fail
+      - run-on-failure

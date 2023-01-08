@@ -22,7 +22,7 @@ jobs:
     steps:
       - run:
           name: "Run on failure"
-          command: "echo run on failure"
+          command: "echo 'run on failure'"
           when: on_fail
 workflows:
   failed jobs:

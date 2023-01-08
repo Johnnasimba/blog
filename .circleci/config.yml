@@ -9,7 +9,7 @@ commands:
     steps:
       - run:
           name: "Return 1"
-          command: "exit 0"
+          command: "exit 1"
 jobs:
   fail:
     docker:

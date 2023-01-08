@@ -16,7 +16,21 @@ jobs:
       - checkout
       - run:
           name: "Say hello"
-          command: "echo Hello, World from South Africa!"
+          command: "echo 'Hello, My name is John Nasimba' > output.txt"
+      - persist_to_workspace:
+            root: .
+            paths:
+              - output.txt
+  print_output_file:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run:
+          name: "Print output file"
+          command: "cat output.txt"
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -24,4 +38,7 @@ workflows:
   save_output:
     jobs:
       - save_hello_world_output
+      - print_output_file:
+          requires:
+            - save_hello_world_output
 

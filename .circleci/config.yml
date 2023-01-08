@@ -16,7 +16,7 @@ jobs:
       - checkout
       - run:
           name: "Say hello"
-          command: "echo 'Hello, My name is John Nasimba' > output.txt"
+          command: "echo 'It works!' > output.txt"
       - persist_to_workspace:
             root: .
             paths:
